@@ -9,16 +9,16 @@ public class Main {
 
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
-    int s=presentCapacities.length();
+    int s=presentCapacities.length;
     for(int i=0;i<s;i++)
       {
-        soh = 100*(capacity_/120)
+        float soh = 100*(presentCapacities[i]/120);
         if(soh >= 80)
-            this.healthy += 1;
-        else if(soh < 80 and soh >= 65)
-            this.exchanged += 1;
-        else:
-            this.failed += 1;
+            counts.healthy += 1;
+        else if((soh < 80) && (soh >= 65))
+            counts.exchange += 1;
+        else
+            counts.failed += 1;
           }
     return counts;
   }
@@ -32,6 +32,7 @@ public class Main {
     assert(counts.failed == 1);
     System.out.println("Done counting :)\n");
   }
+  
 
   public static void main(String[] args) {
     testBucketingByHealth();
